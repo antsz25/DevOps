@@ -68,8 +68,14 @@ jobs:
                                 needs: [Build_OnWindows]
                                 steps:
                                 - uses: actions/checkout@v3
+                                - name: Setup project
+                                  run: |
+                                    wsl --install -d Ubuntu
+                                    wsl -d ubuntu
+                                    ant
+                                    ant
                                 - name: StepOne:Making Docker Image
-                                  run: docker build -t capstone_windowsarch --platform=linux .
+                                  run: docker build -t capstone_windowsarch .
                                 - name: Step Two:Checking Image
                                   run: docker images
                                 - name: Step Three:Making Container
