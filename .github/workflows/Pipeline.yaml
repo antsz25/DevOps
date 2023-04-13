@@ -3,14 +3,14 @@ run-name: ${{github.actor}} is pushing files
 on:
   push:
     paths:
-      - ./capstone-project/hello-world/**
+      - ~/capstone-project/hello-world
 jobs:
   Check-Versions:
     name: Job for WSL Ubuntu
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./capstone-project/hello-world/
+        working-directory: ~/capstone-project/hello-world/
     steps:
       - name: StepOne, Repository Check
         uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./capstone-project/hello-world/        
+        working-directory: ~/capstone-project/hello-world/        
     steps:
       - name: StepOne, Repository Check
         uses: actions/checkout@v3
