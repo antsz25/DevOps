@@ -6,7 +6,7 @@ jobs:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
                   env:
-                    working-directory: capstone-project
+                    working-directory: ./capstone_project/hello-world/
                   steps:
                   - name: StepOne, Repository Check
                     uses: actions/checkout@v3
@@ -14,7 +14,7 @@ jobs:
                     uses: actions/setup-node@v3
                     with:
                       node-version: 16.13.1
-                      cache-dependency-path: ./capstone-project/hello-world/package-lock.json
+                      cache-dependency-path: ./capstone_project/hello-world/package-lock.json
                   - name: Installing Dependencies
                     run: npm install
                     working-directory: ${{env.working-directory}}
@@ -25,7 +25,7 @@ jobs:
                     name: Job for Windows
                     runs-on: windows-latest
                     env:
-                        working-directory: capstone-project
+                        working-directory: ./capstone_project/hello-world/
                     steps:
                     - name: StepOne, Repository Check
                       uses: actions/checkout@v3
@@ -33,7 +33,6 @@ jobs:
                       uses: actions/setup-node@v3
                       with:
                         node-version: 16.13.1
-                        cache-dependency-path: ./capstone-project/hello-world/package-lock.json
                     - name: Installing Dependencies
                       run: npm install
                       working-directory: ${{env.working-directory}}
