@@ -1,24 +1,11 @@
 name: Pipeline_OnPush
-description: 'Greet someone and record the time'
-inputs:
-  who-to-greet: 
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: 
-     description: 'The time we greeted you'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-     - ${{ inputs.who-to-greet }}
 run-name: ${{github.actor}} is pushing files
 on: [push, pull_request]
 jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
+                  container: node:16.13.1
                   defaults:
                     run:
                       working-directory: ./capstone_project/hello-world/
@@ -40,6 +27,7 @@ jobs:
     Build_OnWindows:
                     name: Job for Windows
                     runs-on: windows-latest
+                    container: node:16.13.1
                     defaults:
                       run:
                         working-directory: ./capstone_project/hello-world/
@@ -58,6 +46,7 @@ jobs:
     Deploying_Container:
                                 name: Making Image
                                 runs-on: ubuntu-latest
+                                container: node:16.13.1
                                 defaults:
                                   run:
                                     working-directory: ./capstone_project/hello-world/
