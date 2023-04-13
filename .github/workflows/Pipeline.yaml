@@ -27,9 +27,9 @@ jobs:
                     name: Job for Windows
                     runs-on: windows-latest
                     default:
-                    run:
-                      working-directory: ./capstone_project/hello-world/
-                      shell: bash
+                      run:
+                        working-directory: ./capstone_project/hello-world/
+                        shell: bash
                     steps:
                     - name: StepOne, Repository Check
                       uses: actions/checkout@v3
