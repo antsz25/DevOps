@@ -69,7 +69,7 @@ jobs:
                                 steps:
                                 - uses: actions/checkout@v3
                                 - name: StepOne:Making Docker Image
-                                  run: docker build -t capstone_windowsarch .
+                                  run: docker build -t capstone_windowsarch --platform=linux .
                                 - name: Step Two:Checking Image
                                   run: docker images
                                 - name: Step Three:Making Container
