@@ -5,7 +5,6 @@ jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
-                  container: node:16.13.1
                   defaults:
                     run:
                       working-directory: ./capstone_project/hello-world/
@@ -27,7 +26,6 @@ jobs:
     Build_OnWindows:
                     name: Job for Windows
                     runs-on: windows-latest
-                    container: node:16.13.1
                     defaults:
                       run:
                         working-directory: ./capstone_project/hello-world/
@@ -46,7 +44,6 @@ jobs:
     Deploying_Container:
                                 name: Making Image
                                 runs-on: ubuntu-latest
-                                container: node:16.13.1
                                 defaults:
                                   run:
                                     working-directory: ./capstone_project/hello-world/
