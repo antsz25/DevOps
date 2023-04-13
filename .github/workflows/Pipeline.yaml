@@ -5,7 +5,7 @@ jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
-                  default:
+                  defaults:
                     run:
                       working-directory: ./capstone_project/hello-world/
                       shell: bash
@@ -26,7 +26,7 @@ jobs:
     Build_OnWindows:
                     name: Job for Windows
                     runs-on: windows-latest
-                    default:
+                    defaults:
                       run:
                         working-directory: ./capstone_project/hello-world/
                         shell: bash
@@ -46,7 +46,7 @@ jobs:
     Deploying_Container_OnUbuntu:
                                 name: Making Image
                                 runs-on: ubuntu-latest
-                                default:
+                                defaults:
                                   run:
                                     working-directory: ./capstone_project/hello-world/
                                     shell: bash
@@ -62,7 +62,7 @@ jobs:
     Deploying_Container_OnWindows:
                                 name: Making Image
                                 runs-on: windows-latest
-                                default:
+                                defaults:
                                   run:
                                     working-directory: ./capstone_project/hello-world/
                                     shell: bash
