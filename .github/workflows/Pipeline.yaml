@@ -1,6 +1,4 @@
 name: Pipeline_OnPush
-run-name: ${{github.actor}} is pushing files
-on: [push, pull_request]
 description: 'Greet someone and record the time'
 inputs:
   who-to-greet: 
@@ -15,6 +13,8 @@ runs:
   image: 'Dockerfile'
   args:
      - ${{ inputs.who-to-greet }}
+run-name: ${{github.actor}} is pushing files
+on: [push, pull_request]
 jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
