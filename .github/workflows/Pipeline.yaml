@@ -65,12 +65,11 @@ jobs:
                                 defaults:
                                   run:
                                     working-directory: ./capstone_project/hello-world/
-                                    shell: bash
                                 needs: [Build_OnWindows]
                                 steps:
                                 - uses: actions/checkout@v3
                                 - name: StepOne:Making Docker Image
-                                  run: docker build -t capstone_windowsArch .
+                                  run: docker build -t capstone_windowsarch .
                                 - name: Step Two:Checking Image
                                   run: docker images
                                 - name: Step Three:Making Container
