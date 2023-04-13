@@ -1,10 +1,10 @@
 name: Pipeline_OnPush
 run-name: ${{github.actor}} is pushing files
 on: [push, pull_request]
+jobs:
 default:
   run:
     working-directory: ${{env.working-directory}}
-jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
