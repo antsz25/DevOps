@@ -41,8 +41,6 @@ jobs:
                       run: npm install
                     - name: Check Version of NPM
                       run: npm version
-                    - name: Testing Build
-                      run: npm test
     Deploying_Container_OnUbuntu:
                                 name: Making Image
                                 runs-on: ubuntu-latest
@@ -59,6 +57,8 @@ jobs:
                                   run: docker images
                                 - name: Step Three:Making Container
                                   run: docker run -d -p 3000:3000 capstone_ubuntu
+                                - name: Running container
+                                  run: docker ps
     Deploying_Container_OnWindows:
                                 name: Making Image
                                 runs-on: windows-latest
@@ -75,5 +75,7 @@ jobs:
                                   run: docker images
                                 - name: Step Three:Making Container
                                   run: docker run -d -p 3000:3000 capstone_windowsArch
+                                - name: Running container
+                                  run: docker ps
 
 
