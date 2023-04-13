@@ -1,6 +1,9 @@
 name: Pipeline_OnPush
 run-name: ${{github.actor}} is pushing files
 on: [push, pull_request]
+default:
+  run:
+    working-directory: ${{env.working-directory}}
 jobs:
     Build_OnUbuntu:
                   name: Job for WSL Ubuntu
@@ -17,13 +20,10 @@ jobs:
                       cache-dependency-path: ./capstone_project/hello-world/package-lock.json
                   - name: Installing Dependencies
                     run: npm install
-                    working-directory: ${{env.working-directory}}
                   - name: Check Version of NPM
                     run: npm version
-                    working-directory: ${{env.working-directory}}
-                  - name: Making Docker Image
-                    run: docker build -t capstone .
-                    working-directory: ${{env.working-directory}}
+                  - name: Testing Build
+                    run: npm test
     Build_OnWindows:
                     name: Job for Windows
                     runs-on: windows-latest
@@ -38,32 +38,33 @@ jobs:
                         node-version: 16.13.1
                     - name: Installing Dependencies
                       run: npm install
-                      working-directory: ${{env.working-directory}}
                     - name: Check Version of NPM
                       run: npm version
-                      working-directory: ${{env.working-directory}}
-                    - name: Making Docker Image
-                      run: docker build -t capstone .
-                      working-directory: ${{env.working-directory}}
+                    - name: Testing Build
+                      run: npm test
     Deploying_Container_OnUbuntu:
                                 name: Making Container
                                 runs-on: ubuntu-latest
                                 needs: [Build_OnUbuntu]
+                                env:
+                                  working-directory: ./capstone_project/hello-world/
                                 steps:
                                 - uses: actions/checkout@v3
-                                - name: Step One, Making container
-                                  run: docker run -d -p 3000:3000 capstone
-                                - name: Step Two, Check status of running container
-                                  run: docker ps
+                                - name: StepOne:Making Docker Image
+                                  run: docker build -t capstone_ubuntu .
+                                - name: SetpTwo:Checking Image
+                                  run: docker images
     Deploying_Container_OnWindows:
                                 name: Making Container
                                 runs-on: windows-latest
                                 needs: [Build_OnWindows]
+                                env:
+                                  working-directory: ./capstone_project/hello-world/
                                 steps:
                                 - uses: actions/checkout@v3
-                                - name: Step One, Making container
-                                  run: docker run -d -p 3000:3000 capstone
-                                - name: Step Two, Check status of running container
-                                  run: docker ps    
+                                - name: StepOne:Making Docker Image
+                                  run: docker build -t capstone_windowsArch .
+                                - name: SetpTwo:Checking Image
+                                  run: docker images
 
 
