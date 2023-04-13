@@ -6,7 +6,7 @@ jobs:
                   name: Job for WSL Ubuntu
                   runs-on: ubuntu-latest
                   env:
-                    working-directory: .\capstone-project\hello-world\
+                    working-directory: \capstone-project\hello-world\
                   steps:
                   - name: StepOne, Repository Check
                     uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
                     name: Job for Windows
                     runs-on: windows-latest
                     env:
-                        working-directory: .\capstone-project\hello-world\
+                        working-directory: \capstone-project\hello-world\
                     steps:
                     - name: StepOne, Repository Check
                       uses: actions/checkout@v3
