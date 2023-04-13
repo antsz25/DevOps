@@ -15,9 +15,11 @@ jobs:
                     with:
                       node-version: 16.13.1
                   - name: Installing Dependencies
-                    run: npm ci
+                    run: npm install
+                    working-directory: ${{env.working-directory}}
                   - name: Check Version of NPM
                     run: npm version
+                    working-directory: ${{env.working-directory}}
     WindowsVersions:
                     name: Job for Windows
                     runs-on: windows-latest
@@ -32,5 +34,7 @@ jobs:
                         node-version: 16.13.1
                     - name: Installing Dependencies
                       run: npm install
+                      working-directory: ${{env.working-directory}}
                     - name: Check Version of NPM
                       run: npm version
+                      working-directory: ${{env.working-directory}}
