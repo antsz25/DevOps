@@ -1,5 +1,5 @@
-#!/bin/sh
-# `$#` expands to the number of arguments and `$@` expands to the supplied `args`
-printf '%d args:' "$#"
-printf " '%s'" "$@"
-printf '\n'
+#!/bin/sh -l
+
+echo "Hello $1"
+time=$(date)
+echo "time=$time" >> $GITHUB_OUTPUT
