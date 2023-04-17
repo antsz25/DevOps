@@ -1,3 +1,4 @@
-FROM debian:9.5-slim
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+FROM ubuntu:latest
+WORKDIR /.github/workflows
+COPY . .
+RUN apt-get update && apt-get updgrade
